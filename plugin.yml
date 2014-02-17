@@ -1,18 +1,18 @@
 name: DRankViewer
 description: A plugin which allows viewing of two sets of donation items and perks through right or left clicking with a configurable item.
-main: io.github.drankviewer.DRankViwer
+main: io.github.drankviewer.DRankViewer
 version: 0.01
 commands:
   DRVSetChest:
     description: Set a chest as the donation list.
     permission: drankviewer.admin.set
     permission-message: You do not have permission to configure DRankViewer. Please use /DRV for general usage.
-    usage: Look at a chest and type /DRVSetChest <Tier1|Tier2>
+    usage: Look at a chest and type /DRVSetChest <Tier1|Tier2> Accept
   DRVSetItem:
     description: Set an item for use with /DRV
     permission: drankviewer.admin.set
     permission-message: You do not have permission to configure DRankViewer. Please use /DRV for general usage.
-    usage: Hold the desired item in your hand and type /DRVSetItem
+    usage: Hold the desired item in your hand and type /DRVSetItem Accept
   DRVGive:
     description: A variation of /DRV that allows spawning in multiple copies of the item.
     permission: drankviewer.admin.give
