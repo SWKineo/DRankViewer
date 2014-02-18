@@ -1,22 +1,26 @@
 package io.github.drankviewer;
 
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
 import java.io.File;
+import java.io.IOException;
 import java.util.logging.Logger;
 
 public class DRankViewer extends JavaPlugin {
 
-	
+	// Generating global access to the logger and config File.
 	public Logger logger;
-	//public ItemStack viewItem = new ItemStack (getConfig().getInt("viewItemID"))
+	public FileConfiguration config = getConfig();
+	public File configFile = new File(getDataFolder(), "config.yml");
+	
 	
 	@Override
 	public void onEnable () {
 		logger = getLogger();
 		
 		// Save config.yml
-		if (!new File(getDataFolder(), "config.yml").exists()) {
+		if (!configFile.exists()) {
 			saveDefaultConfig();
 		}
 		
@@ -30,7 +34,12 @@ public class DRankViewer extends JavaPlugin {
 	
 	@Override
 	public void onDisable () {
-		// TODO Insert logic to be performed when the plugin is disabled.
+		try {
+			config.save(configFile);
+		} catch (IOException e) {
+			logger.info("Configuration saving failed");
+			e.printStackTrace();
+		}
 	}
 	
 }
